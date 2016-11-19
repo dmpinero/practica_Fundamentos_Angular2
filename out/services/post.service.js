@@ -20,10 +20,11 @@ var PostService = (function () {
     function PostService(_http, _backendUri) {
         this._http = _http;
         this._backendUri = _backendUri;
+        this.fecha_actual = Date.now();
     }
     PostService.prototype.getPosts = function () {
         /*----------------------------------------------------------------------------------------------|
-         | ~~~ Red Path ~~~                                                                             |
+         | ~~~ Pink Path ~~~                                                                             |
          |----------------------------------------------------------------------------------------------|
          | Pide al servidor que te retorne los posts ordenados de más reciente a menos, teniendo en     |
          | cuenta su fecha de publicación. Filtra también aquellos que aún no están publicados, pues no |
@@ -37,7 +38,7 @@ var PostService = (function () {
          |   - Ordenación: _sort=publicationDate&_order=DESC                                            |
          |----------------------------------------------------------------------------------------------*/
         return this._http
-            .get(this._backendUri + "/posts")
+            .get(this._backendUri + "/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=" + this.fecha_actual)
             .map(function (response) { return post_1.Post.fromJsonToList(response.json()); });
     };
     PostService.prototype.getUserPosts = function (id) {
