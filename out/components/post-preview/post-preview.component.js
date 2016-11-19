@@ -8,25 +8,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var post_1 = require("../../models/post");
 var PostPreviewComponent = (function () {
     function PostPreviewComponent() {
+        /*------------------------------------------------------------------------------------------------------------------|
+         | ~~~ Red Path ~~~                                                                                                 |
+         |------------------------------------------------------------------------------------------------------------------|
+         | Expón un atributo de salida con el decorador correspondiente. El tipo de dicho atributo debe permitir la emisión |
+         | de eventos; la idea es enviar al componente padre el usuario sobre el cuál se ha hecho clic. Y puesto que dicho  |
+         | clic se realiza en el template de este componente, necesitas, además, un manejador para el mismo.                |
+         |------------------------------------------------------------------------------------------------------------------*/
+        /*------------------------------------------------------------------------------------------------------------------|
+         | ~~~ Green Path ~~~                                                                                               |
+         |------------------------------------------------------------------------------------------------------------------|
+         | Expón un atributo de salida con el decorador correspondiente. El tipo de dicho atributo debe permitir la emisión |
+         | de eventos; la idea es enviar al componente padre el post sobre el cuál se ha hecho clic. Y puesto que dicho     |
+         | clic se realiza en el template de este componente, necesitas, además, un manejador para el mismo.                |
+         |------------------------------------------------------------------------------------------------------------------*/
+        this.detallePost = new core_1.EventEmitter();
     }
-    /*------------------------------------------------------------------------------------------------------------------|
-     | ~~~ Red Path ~~~                                                                                                 |
-     |------------------------------------------------------------------------------------------------------------------|
-     | Expón un atributo de salida con el decorador correspondiente. El tipo de dicho atributo debe permitir la emisión |
-     | de eventos; la idea es enviar al componente padre el usuario sobre el cuál se ha hecho clic. Y puesto que dicho  |
-     | clic se realiza en el template de este componente, necesitas, además, un manejador para el mismo.                |
-     |------------------------------------------------------------------------------------------------------------------*/
-    /*------------------------------------------------------------------------------------------------------------------|
-     | ~~~ Green Path ~~~                                                                                               |
-     |------------------------------------------------------------------------------------------------------------------|
-     | Expón un atributo de salida con el decorador correspondiente. El tipo de dicho atributo debe permitir la emisión |
-     | de eventos; la idea es enviar al componente padre el post sobre el cuál se ha hecho clic. Y puesto que dicho     |
-     | clic se realiza en el template de este componente, necesitas, además, un manejador para el mismo.                |
-     |------------------------------------------------------------------------------------------------------------------*/
+    PostPreviewComponent.prototype.irDetalle = function () {
+        this.detallePost.emit(this.post.id);
+    };
     PostPreviewComponent.prototype.plainTextToHtml = function (text) {
         return "<p>" + text.replace(/\n/gi, "</p><p>") + "</p>";
     };
@@ -34,6 +38,10 @@ var PostPreviewComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', post_1.Post)
     ], PostPreviewComponent.prototype, "post", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], PostPreviewComponent.prototype, "detallePost", void 0);
     PostPreviewComponent = __decorate([
         core_1.Component({
             selector: "post-preview",

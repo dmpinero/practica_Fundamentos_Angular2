@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
-
+import { AppRoutingModule } from '../../app.routing';
 import { Post } from "../../models/post";
+import { Router } from '@angular/router';
 
 @Component({
     selector: "posts-list",
@@ -10,6 +11,7 @@ export class PostsListComponent {
 
     @Input() posts: Post[];
 
+    constructor(private _router: Router) { }
     /*------------------------------------------------------------------------------------------------------------------|
      | ~~~ Red Path ~~~                                                                                                 |
      |------------------------------------------------------------------------------------------------------------------|
@@ -25,5 +27,7 @@ export class PostsListComponent {
      | correspondiente. Recuerda que para hacer esto necesitas inyectar como dependencia el Router de la app.  La ruta |
      | a navegar es '/posts', pasando como parámetro el identificador del post.                                        |
      |-----------------------------------------------------------------------------------------------------------------*/
-
+    navegarPost(id: number): void {
+        this._router.navigate(['/posts', id]);
+    }       
 }
