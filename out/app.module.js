@@ -36,6 +36,7 @@ var posts_resolve_service_1 = require("./services/posts-resolve.service");
 var post_service_1 = require("./services/post.service");
 var search_box_component_1 = require("./components/search-box/search-box.component");
 var user_posts_component_1 = require("./components/user-posts/user-posts.component");
+var from_now_pipe_1 = require('./pipes/from-now.pipe');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -65,7 +66,8 @@ var AppModule = (function () {
                 post_form_component_1.PostFormComponent,
                 posts_list_component_1.PostsListComponent,
                 search_box_component_1.SearchBoxComponent,
-                user_posts_component_1.UserPostsComponent
+                user_posts_component_1.UserPostsComponent,
+                from_now_pipe_1.FromNowPipe
             ],
             providers: [
                 settings_service_1.BackendUriProvider,
