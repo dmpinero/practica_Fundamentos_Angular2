@@ -23,8 +23,9 @@ var PostsResolve = (function () {
          | mirar en los parámetros de la ruta, a ver qué encuentras.                               |
          |-----------------------------------------------------------------------------------------*/
         var userId = route.params['userId'];
-        if (userId != undefined)
+        if (userId != undefined) {
             return this._postService.getUserPosts(userId);
+        }
         /*-----------------------------------------------------------------------------------------|
          | ~~~ Yellow Path ~~~                                                                     |
          |-----------------------------------------------------------------------------------------|
@@ -32,6 +33,10 @@ var PostsResolve = (function () {
          | a una categoría, llame a la función 'getCategoryPosts()' del servicio PostService.      |
          | Recuerda mirar en los parámetros de la ruta, a ver qué encuentras.                      |
          |-----------------------------------------------------------------------------------------*/
+        var categoryId = route.params['categoryId'];
+        if (categoryId != undefined) {
+            return this._postService.getCategoryPosts(categoryId);
+        }
         return this._postService.getPosts();
     };
     PostsResolve = __decorate([

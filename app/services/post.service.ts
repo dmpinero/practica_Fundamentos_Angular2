@@ -5,6 +5,7 @@ import "rxjs/add/operator/map";
 
 import { BackendUri } from "./settings.service";
 import { Post } from "../models/post";
+import { Category } from '../models/category';
 
 @Injectable()
 export class PostService {
@@ -81,9 +82,17 @@ export class PostService {
          |   - Ordenación: _sort=publicationDate&_order=DESC                                                |
          |--------------------------------------------------------------------------------------------------*/
 
-        return this._http
-                   .get(`${this._backendUri}/posts`)
-                   .map((response: Response) => Post.fromJsonToList(response.json()));
+        let posts = this._http
+                   .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${this.fecha_actual}`)
+
+        return posts.map((response: Response) => {
+            let post_json = Post.fromJsonToList(response.json());
+                return post_json.filter((post: Post) => {
+                    return post.categories.find((category: Category) => {
+                        return category.id == id;
+                    })
+                })
+        });
     }
 
     getPostDetails(id: number): Observable<Post> {

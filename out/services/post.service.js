@@ -83,9 +83,16 @@ var PostService = (function () {
          |   - Filtro por fecha de publicación: publicationDate_lte=x (siendo x la fecha actual)            |
          |   - Ordenación: _sort=publicationDate&_order=DESC                                                |
          |--------------------------------------------------------------------------------------------------*/
-        return this._http
-            .get(this._backendUri + "/posts")
-            .map(function (response) { return post_1.Post.fromJsonToList(response.json()); });
+        var posts = this._http
+            .get(this._backendUri + "/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=" + this.fecha_actual);
+        return posts.map(function (response) {
+            var post_json = post_1.Post.fromJsonToList(response.json());
+            return post_json.filter(function (post) {
+                return post.categories.find(function (category) {
+                    return category.id == id;
+                });
+            });
+        });
     };
     PostService.prototype.getPostDetails = function (id) {
         return this._http

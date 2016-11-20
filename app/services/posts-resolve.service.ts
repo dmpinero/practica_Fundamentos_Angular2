@@ -7,7 +7,7 @@ import { PostService } from "./post.service";
 
 @Injectable()
 export class PostsResolve implements Resolve<Post[]> {
-
+    
     constructor(private _postService: PostService) { }
 
     resolve(route: ActivatedRouteSnapshot): Observable<Post[]> {
@@ -20,8 +20,9 @@ export class PostsResolve implements Resolve<Post[]> {
          | mirar en los parámetros de la ruta, a ver qué encuentras.                               |
          |-----------------------------------------------------------------------------------------*/
         let userId = route.params['userId'];
-        if ( userId != undefined)
+        if ( userId != undefined) {
             return this._postService.getUserPosts(userId);
+        }
 
         /*-----------------------------------------------------------------------------------------|
          | ~~~ Yellow Path ~~~                                                                     |
@@ -30,6 +31,12 @@ export class PostsResolve implements Resolve<Post[]> {
          | a una categoría, llame a la función 'getCategoryPosts()' del servicio PostService.      |
          | Recuerda mirar en los parámetros de la ruta, a ver qué encuentras.                      |
          |-----------------------------------------------------------------------------------------*/
+        
+        let categoryId = route.params['categoryId'];
+        if ( categoryId != undefined) {
+            return this._postService.getCategoryPosts(categoryId);
+        }
+
         return this._postService.getPosts();
     }
 }
