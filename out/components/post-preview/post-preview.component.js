@@ -19,6 +19,7 @@ var PostPreviewComponent = (function () {
          | de eventos; la idea es enviar al componente padre el usuario sobre el cuál se ha hecho clic. Y puesto que dicho  |
          | clic se realiza en el template de este componente, necesitas, además, un manejador para el mismo.                |
          |------------------------------------------------------------------------------------------------------------------*/
+        this.autorPost = new core_1.EventEmitter();
         /*------------------------------------------------------------------------------------------------------------------|
          | ~~~ Green Path ~~~                                                                                               |
          |------------------------------------------------------------------------------------------------------------------|
@@ -28,6 +29,9 @@ var PostPreviewComponent = (function () {
          |------------------------------------------------------------------------------------------------------------------*/
         this.detallePost = new core_1.EventEmitter();
     }
+    PostPreviewComponent.prototype.filtrarPorAutor = function () {
+        this.autorPost.emit(this.post.author.id);
+    };
     PostPreviewComponent.prototype.irDetalle = function () {
         this.detallePost.emit(this.post.id);
     };
@@ -38,6 +42,10 @@ var PostPreviewComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', post_1.Post)
     ], PostPreviewComponent.prototype, "post", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], PostPreviewComponent.prototype, "autorPost", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)

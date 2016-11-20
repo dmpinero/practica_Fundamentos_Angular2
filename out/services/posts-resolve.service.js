@@ -22,6 +22,9 @@ var PostsResolve = (function () {
          | a un usuario, llame a la función 'getUserPosts()' del servicio PostService. Recuerda    |
          | mirar en los parámetros de la ruta, a ver qué encuentras.                               |
          |-----------------------------------------------------------------------------------------*/
+        var userId = route.params['userId'];
+        if (userId != undefined)
+            return this._postService.getUserPosts(userId);
         /*-----------------------------------------------------------------------------------------|
          | ~~~ Yellow Path ~~~                                                                     |
          |-----------------------------------------------------------------------------------------|

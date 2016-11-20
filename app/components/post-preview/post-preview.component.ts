@@ -18,7 +18,10 @@ export class PostPreviewComponent {
      | de eventos; la idea es enviar al componente padre el usuario sobre el cuál se ha hecho clic. Y puesto que dicho  |
      | clic se realiza en el template de este componente, necesitas, además, un manejador para el mismo.                |
      |------------------------------------------------------------------------------------------------------------------*/
-    
+     @Output() autorPost: EventEmitter <number> = new EventEmitter();
+     filtrarPorAutor(): void {
+        this.autorPost.emit(this.post.author.id);
+     }
     /*------------------------------------------------------------------------------------------------------------------|
      | ~~~ Green Path ~~~                                                                                               |
      |------------------------------------------------------------------------------------------------------------------|
@@ -28,7 +31,6 @@ export class PostPreviewComponent {
      |------------------------------------------------------------------------------------------------------------------*/
 
     @Output() detallePost: EventEmitter <number> = new EventEmitter();
-    
     irDetalle(): void {
         this.detallePost.emit(this.post.id);
     }
@@ -36,4 +38,5 @@ export class PostPreviewComponent {
     plainTextToHtml(text: string): string {
         return `<p>${text.replace(/\n/gi, "</p><p>")}</p>`;
     }
+
 }

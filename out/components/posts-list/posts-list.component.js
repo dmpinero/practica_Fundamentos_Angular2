@@ -21,6 +21,9 @@ var PostsListComponent = (function () {
      | dirección correspondiente. Recuerda que para hacer esto necesitas inyectar como dependencia el Router de la app. |
      | La ruta a navegar es '/posts/users', pasando como parámetro el identificador del autor.                          |
      |------------------------------------------------------------------------------------------------------------------*/
+    PostsListComponent.prototype.filtrarPostAutor = function (id) {
+        this._router.navigate(['/posts/users', id]);
+    };
     /*-----------------------------------------------------------------------------------------------------------------|
      | ~~~ Green Path ~~~                                                                                              |
      |-----------------------------------------------------------------------------------------------------------------|

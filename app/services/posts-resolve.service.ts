@@ -19,6 +19,9 @@ export class PostsResolve implements Resolve<Post[]> {
          | a un usuario, llame a la función 'getUserPosts()' del servicio PostService. Recuerda    |
          | mirar en los parámetros de la ruta, a ver qué encuentras.                               |
          |-----------------------------------------------------------------------------------------*/
+        let userId = route.params['userId'];
+        if ( userId != undefined)
+            return this._postService.getUserPosts(userId);
 
         /*-----------------------------------------------------------------------------------------|
          | ~~~ Yellow Path ~~~                                                                     |
@@ -27,7 +30,6 @@ export class PostsResolve implements Resolve<Post[]> {
          | a una categoría, llame a la función 'getCategoryPosts()' del servicio PostService.      |
          | Recuerda mirar en los parámetros de la ruta, a ver qué encuentras.                      |
          |-----------------------------------------------------------------------------------------*/
-
         return this._postService.getPosts();
     }
 }

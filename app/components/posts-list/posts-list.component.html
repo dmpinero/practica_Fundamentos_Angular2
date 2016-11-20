@@ -16,4 +16,4 @@
 |--------------------------------------------------------------------------|
 -->
 
-<post-preview *ngFor="let post of posts" [post]="post" (detallePost)="navegarPost($event)"></post-preview>
+<post-preview *ngFor="let post of posts" [post]="post" (detallePost)="navegarPost($event)" (autorPost)="filtrarPostAutor($event)"></post-preview>

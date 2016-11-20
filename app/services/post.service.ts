@@ -15,7 +15,6 @@ export class PostService {
         @Inject(BackendUri) private _backendUri) { }
 
     getPosts(): Observable<Post[]> {
-
         /*----------------------------------------------------------------------------------------------|
          | ~~~ Pink Path ~~~                                                                             |
          |----------------------------------------------------------------------------------------------|
@@ -54,9 +53,8 @@ export class PostService {
          |   - Filtro por fecha de publicación: publicationDate_lte=x (siendo x la fecha actual)        |
          |   - Ordenación: _sort=publicationDate&_order=DESC                                            |
          |----------------------------------------------------------------------------------------------*/
-
         return this._http
-                   .get(`${this._backendUri}/posts`)
+                   .get(`${this._backendUri}/posts?author.id=${id}&_sort=publicationDate&_order=DESC&publicationDate_lte=${this.fecha_actual}`)
                    .map((response: Response) => Post.fromJsonToList(response.json()));
     }
 

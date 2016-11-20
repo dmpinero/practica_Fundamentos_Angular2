@@ -59,7 +59,7 @@ var PostService = (function () {
          |   - Ordenación: _sort=publicationDate&_order=DESC                                            |
          |----------------------------------------------------------------------------------------------*/
         return this._http
-            .get(this._backendUri + "/posts")
+            .get(this._backendUri + "/posts?author.id=" + id + "&_sort=publicationDate&_order=DESC&publicationDate_lte=" + this.fecha_actual)
             .map(function (response) { return post_1.Post.fromJsonToList(response.json()); });
     };
     PostService.prototype.getCategoryPosts = function (id) {

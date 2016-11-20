@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { AppRoutingModule } from '../../app.routing';
-import { Post } from "../../models/post";
+import { Post } from '../../models/post';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,6 +19,10 @@ export class PostsListComponent {
      | dirección correspondiente. Recuerda que para hacer esto necesitas inyectar como dependencia el Router de la app. |
      | La ruta a navegar es '/posts/users', pasando como parámetro el identificador del autor.                          |
      |------------------------------------------------------------------------------------------------------------------*/
+     filtrarPostAutor(id: number) {
+         this._router.navigate(['/posts/users', id]);
+     }
+
 
     /*-----------------------------------------------------------------------------------------------------------------|
      | ~~~ Green Path ~~~                                                                                              |
