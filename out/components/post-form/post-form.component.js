@@ -54,6 +54,8 @@ var PostFormComponent = (function () {
         post.likes = 0;
         post.author = user_1.User.defaultUser();
         post.publicationDate = this._getPostPublicationDate(form.value.publicationDate);
+        post.media = "";
+        post.categories = null;
         this.postSubmitted.emit(post);
     };
     __decorate([

@@ -4,7 +4,7 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 
 import { BackendUri } from "./settings.service";
-import { Post } from "../models/post";
+import { Post } from '../models/post';
 import { Category } from '../models/category';
 
 @Injectable()
@@ -113,6 +113,13 @@ export class PostService {
          | 'fromJson() para crar un nuevo objeto Post basado en la respuesta HTTP obtenida. |
          |----------------------------------------------------------------------------------*/
 
-        return null;
+        return this._http
+                   .post(`${this._backendUri}/posts`, post)
+                   .map((respuesta: Response) => {
+                       // Obtenemos el cuerpo de la respuesta en formato JSON.
+                       let json = respuesta.json();
+                       // Creamos una instancia de Post.
+                       return Post.fromJson(json)
+                   });
     }
 }

@@ -15,7 +15,7 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var settings_service_1 = require("./settings.service");
-var post_1 = require("../models/post");
+var post_1 = require('../models/post');
 var PostService = (function () {
     function PostService(_http, _backendUri) {
         this._http = _http;
@@ -109,7 +109,14 @@ var PostService = (function () {
          | datos actualizados obtenidos tras la inserción; puedes usar la función estática  |
          | 'fromJson() para crar un nuevo objeto Post basado en la respuesta HTTP obtenida. |
          |----------------------------------------------------------------------------------*/
-        return null;
+        return this._http
+            .post(this._backendUri + "/posts", post)
+            .map(function (respuesta) {
+            // Obtenemos el cuerpo de la respuesta en formato JSON.
+            var json = respuesta.json();
+            // Creamos una instancia de Post.
+            return post_1.Post.fromJson(json);
+        });
     };
     PostService = __decorate([
         core_1.Injectable(),
