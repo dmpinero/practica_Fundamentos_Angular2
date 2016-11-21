@@ -253,10 +253,12 @@
       "id": 10
     },
     {
-      "title": "aa",
-      "intro": "aaa",
-      "body": "aaaa",
-      "publicationDate": 1479661680000,
+      "title": "Historia de Dani",
+      "intro": "dd",
+      "body": "ddf",
+      "media": "",
+      "publicationDate": 1479664260000,
+      "categories": [],
       "author": {
         "id": 1,
         "name": "KeepCoder",
@@ -268,10 +270,12 @@
       "id": 11
     },
     {
-      "title": "a1",
-      "intro": "a11",
-      "body": "a111",
-      "publicationDate": 1479658558095,
+      "title": "Historia final",
+      "intro": "Esta es la última historia",
+      "body": "que pruebo",
+      "media": "",
+      "publicationDate": 1479747240000,
+      "categories": [],
       "author": {
         "id": 1,
         "name": "KeepCoder",
@@ -281,208 +285,6 @@
       },
       "likes": 0,
       "id": 12
-    },
-    {
-      "title": "a",
-      "intro": "aa",
-      "body": "aaa",
-      "publicationDate": 1479662160000,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 13
-    },
-    {
-      "title": "aaa",
-      "intro": "ddd",
-      "body": "ggg",
-      "media": "https://s3.amazonaws.com/uifaces/faces/twitter/unterdreht/128.jpg",
-      "publicationDate": 1479662460000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 14
-    },
-    {
-      "title": "Desconectados: la nueva tribu urbana que abandona internet para abrazar la vida real",
-      "intro": "efefdsfdsf",
-      "body": "dsfdsfdsafdsfdsafdsf\ndfsfsaf\ndsa\nf\nsda\nfsda\nf\ndsaf\nsafdsafdsaf",
-      "media": "",
-      "publicationDate": 1479662520000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 15
-    },
-    {
-      "title": "Desconectados: la nueva tribu urbana que abandona internet para abrazar la vida real",
-      "intro": "dfdasfs",
-      "body": "fdasfdsaf\nfdsa\nfsa\nf\nas\n",
-      "media": "",
-      "publicationDate": 1479576120000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 16
-    },
-    {
-      "title": "prueba",
-      "intro": "otra prueba",
-      "body": "historia de otra prueba",
-      "media": "",
-      "publicationDate": 1479662580000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 17
-    },
-    {
-      "title": "prueba",
-      "intro": "aaa",
-      "body": "fadkfjdsfj",
-      "media": "",
-      "publicationDate": 1479489780000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 18
-    },
-    {
-      "title": "dfdsf",
-      "intro": "fdsfdsa",
-      "body": "dfsafdsafads",
-      "media": "",
-      "publicationDate": 1479662640000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 19
-    },
-    {
-      "title": 1,
-      "intro": 11,
-      "body": 111,
-      "media": "",
-      "publicationDate": 1479662640000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 20
-    },
-    {
-      "title": 2,
-      "intro": 22,
-      "body": 222,
-      "media": "",
-      "publicationDate": 1479662700000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 21
-    },
-    {
-      "title": "ddd",
-      "intro": "fff",
-      "body": "fffffff",
-      "media": "",
-      "publicationDate": 1479576300000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 22
-    },
-    {
-      "title": "2 días",
-      "intro": "hace que",
-      "body": "publiqué esto",
-      "media": "",
-      "publicationDate": 1479489900000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 23
-    },
-    {
-      "title": "Y esto",
-      "intro": "hace 3 días",
-      "body": "que se publicó",
-      "media": "",
-      "publicationDate": 1479403560000,
-      "categories": null,
-      "author": {
-        "id": 1,
-        "name": "KeepCoder",
-        "username": "keepcoder",
-        "email": "keepcoder@postium.com",
-        "avatar": "images/keepcoder.jpg"
-      },
-      "likes": 0,
-      "id": 24
     }
   ],
   "categories": [

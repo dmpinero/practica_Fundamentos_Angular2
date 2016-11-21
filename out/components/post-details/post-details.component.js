@@ -30,8 +30,8 @@ var PostDetailsComponent = (function () {
      | para hacer esto necesitas inyectar como dependencia el Router de la app. La ruta a navegar es '/posts/users', |
      | pasando como parámetro el identificador del autor.                                                            |
      |---------------------------------------------------------------------------------------------------------------*/
-    PostDetailsComponent.prototype.filtrarPorAutor = function (id) {
-        this._router.navigate(['/posts/users', id]);
+    PostDetailsComponent.prototype.filtrarPorAutor = function () {
+        this._router.navigate(['/posts/users', this.post.author.id]);
     };
     /*--------------------------------------------------------------------------------------------------------------------|
      | ~~~ Yellow Path ~~~                                                                                                |

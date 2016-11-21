@@ -3,6 +3,7 @@ import { FormGroup } from "@angular/forms";
 
 import { Post } from "../../models/post";
 import { User } from "../../models/user";
+import { Category } from '../../models/category';
 
 @Component({
     selector: "post-form",
@@ -66,7 +67,7 @@ export class PostFormComponent implements OnInit {
         post.author = User.defaultUser();
         post.publicationDate = this._getPostPublicationDate(form.value.publicationDate);
         post.media = "";
-        post.categories = null;        
+        post.categories = [];
         this.postSubmitted.emit(post);
     }
 }

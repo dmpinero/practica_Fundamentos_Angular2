@@ -28,8 +28,8 @@ export class PostDetailsComponent implements OnInit {
      | para hacer esto necesitas inyectar como dependencia el Router de la app. La ruta a navegar es '/posts/users', |
      | pasando como parámetro el identificador del autor.                                                            |
      |---------------------------------------------------------------------------------------------------------------*/
-    filtrarPorAutor(id:number): void {
-        this._router.navigate(['/posts/users', id]);
+    filtrarPorAutor(): void {
+        this._router.navigate(['/posts/users', this.post.author.id]);
     }
 
     /*--------------------------------------------------------------------------------------------------------------------|
