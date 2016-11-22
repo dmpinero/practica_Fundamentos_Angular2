@@ -457,6 +457,7 @@
       "id": 22
     },
     {
+      "id": 23,
       "title": "ddd",
       "intro": "ffff",
       "body": "ffff",
@@ -470,10 +471,10 @@
         "email": "keepcoder@postium.com",
         "avatar": "images/keepcoder.jpg"
       },
-      "likes": 0,
-      "id": 23
+      "likes": 1
     },
     {
+      "id": 24,
       "title": "A las 11:22",
       "intro": "he creado ",
       "body": "una historia",
@@ -487,8 +488,7 @@
         "email": "keepcoder@postium.com",
         "avatar": "images/keepcoder.jpg"
       },
-      "likes": 0,
-      "id": 24
+      "likes": 1
     },
     {
       "id": 25,
@@ -505,7 +505,7 @@
         "email": "keepcoder@postium.com",
         "avatar": "images/keepcoder.jpg"
       },
-      "likes": 0
+      "likes": 1
     },
     {
       "id": 26,
@@ -522,7 +522,7 @@
         "email": "keepcoder@postium.com",
         "avatar": "images/keepcoder.jpg"
       },
-      "likes": 0
+      "likes": 1
     }
   ],
   "categories": [

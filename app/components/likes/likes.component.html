@@ -1,0 +1,5 @@
+<hr>
+<div>
+    Tengo {{ post.likes}} "Me gusta"
+    <i class="fa fa-thumbs-o-up" aria-hidden="true" *ngIf="post.likes === 0" (click)="updateLikes();"></i>
+</div>

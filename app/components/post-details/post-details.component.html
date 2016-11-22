@@ -35,7 +35,16 @@
     <div class="html-text" [innerHtml]="plainTextToHtml(post.intro)"></div>
     <hr>
     <div class="html-text" [innerHtml]="plainTextToHtml(post.body)"></div>
+    <!--
+    |--------------------------------------------------------------------------|
+    | Brick Red Path (AKA Teja)    
+    |--------------------------------------------------------------------------|
+    | Mostrar componente de Likes
+    |--------------------------------------------------------------------------|
+    -->
+    <likes [post]="post"></likes>
 
+    <hr>
     <!--
     |--------------------------------------------------------------------------|
     | Optional Path Broken White Path (AKA Blanco Roto)    

@@ -23,9 +23,9 @@ var PostService = (function () {
         this._backendUri = _backendUri;
         this.fecha_actual = Date.now();
         /*----------------------------------------------------------------------------------|
-         | ~~~ Optional Path Broken White Path (AKA Blanco Roto) ~~~                                                              |
+         | ~~~ Optional Path Broken White Path (AKA Blanco Roto) ~~~                        |                                      |
          |----------------------------------------------------------------------------------|
-         | Actuaizar Post
+         | Actuaizar Post                                                                   |
          |----------------------------------------------------------------------------------*/
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
@@ -130,6 +130,19 @@ var PostService = (function () {
         return Promise.reject(error.message || error);
     };
     PostService.prototype.updatePost = function (post) {
+        var url = this._backendUri + "/posts/" + post.id;
+        return this._http
+            .put(url, JSON.stringify(post), { headers: this.headers })
+            .toPromise()
+            .then(function () { return post; })
+            .catch(this.handleError);
+    };
+    /*----------------------------------------------------------------------------------|
+     | ~~~ Brick Red Path (AKA Teja): ~~~                                               |
+     |----------------------------------------------------------------------------------|
+     | Actuaizar Likes                                                                   |
+     |----------------------------------------------------------------------------------*/
+    PostService.prototype.updateLikes = function (post) {
         var url = this._backendUri + "/posts/" + post.id;
         return this._http
             .put(url, JSON.stringify(post), { headers: this.headers })

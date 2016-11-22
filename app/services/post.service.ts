@@ -125,9 +125,9 @@ export class PostService {
     }
 
    /*----------------------------------------------------------------------------------|
-    | ~~~ Optional Path Broken White Path (AKA Blanco Roto) ~~~                                                              |
+    | ~~~ Optional Path Broken White Path (AKA Blanco Roto) ~~~                        |                                      |
     |----------------------------------------------------------------------------------|
-    | Actuaizar Post
+    | Actuaizar Post                                                                   |
     |----------------------------------------------------------------------------------*/
     private headers = new Headers({'Content-Type': 'application/json'});   
     private handleError(error: any): Promise<any> {
@@ -143,4 +143,19 @@ export class PostService {
             .then(() => post)
             .catch(this.handleError);
     }
+
+   /*----------------------------------------------------------------------------------|
+    | ~~~ Brick Red Path (AKA Teja): ~~~                                               |
+    |----------------------------------------------------------------------------------|
+    | Actuaizar Likes                                                                   |
+    |----------------------------------------------------------------------------------*/
+    updateLikes(post: Post): Promise<Post> {
+            const url = `${this._backendUri}/posts/${post.id}`;
+            return this._http
+                .put(url, JSON.stringify(post), {headers: this.headers})
+                .toPromise()
+                .then(() => post)
+                .catch(this.handleError);
+        }
+
 }
