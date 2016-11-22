@@ -1,7 +1,9 @@
 import { Inject, Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { Http, Headers, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
+
 import "rxjs/add/operator/map";
+import 'rxjs/add/operator/toPromise';
 
 import { BackendUri } from "./settings.service";
 import { Post } from '../models/post';
@@ -112,14 +114,33 @@ export class PostService {
          | datos actualizados obtenidos tras la inserción; puedes usar la función estática  |
          | 'fromJson() para crar un nuevo objeto Post basado en la respuesta HTTP obtenida. |
          |----------------------------------------------------------------------------------*/
-
         return this._http
                    .post(`${this._backendUri}/posts`, post)
                    .map((respuesta: Response) => {
                        // Obtenemos el cuerpo de la respuesta en formato JSON.
                        let json = respuesta.json();
                        // Creamos una instancia de Post.
-                       return Post.fromJson(json)
+                       return Post.fromJson(json);
                    });
+    }
+
+   /*----------------------------------------------------------------------------------|
+    | ~~~ Optional Path Broken White Path (AKA Blanco Roto) ~~~                                                              |
+    |----------------------------------------------------------------------------------|
+    | Actuaizar Post
+    |----------------------------------------------------------------------------------*/
+    private headers = new Headers({'Content-Type': 'application/json'});   
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    }
+
+    updatePost(post: Post): Promise<Post> {
+        const url = `${this._backendUri}/posts/${post.id}`;
+        return this._http
+            .put(url, JSON.stringify(post), {headers: this.headers})
+            .toPromise()
+            .then(() => post)
+            .catch(this.handleError);
     }
 }

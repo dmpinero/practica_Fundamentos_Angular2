@@ -15,9 +15,16 @@ var PostFormComponent = (function () {
     function PostFormComponent() {
         this.publicationDateScheduled = false;
         this.postSubmitted = new core_1.EventEmitter();
+        this.postSubmittedUpdated = new core_1.EventEmitter();
     }
     PostFormComponent.prototype.ngOnInit = function () {
         this.nowDatetimeLocal = this._formatDateToDatetimeLocal(new Date());
+        if (this.post) {
+            this.texto = "Actualizar";
+        }
+        else {
+            this.texto = "Publicar";
+        }
     };
     PostFormComponent.prototype._formatDateToDatetimeLocal = function (date) {
         return ("\n            " + this._fixPad(date.getFullYear(), 4) + "-\n            " + this._fixPad(date.getMonth() + 1, 2) + "-\n            " + this._fixPad(date.getDate(), 2) + "T\n            " + this._fixPad(date.getHours(), 2) + ":\n            " + this._fixPad(date.getMinutes(), 2)).replace(/\n/gi, "").replace(/ /gi, "");
@@ -51,17 +58,30 @@ var PostFormComponent = (function () {
          | distintos elementos del formulario se correspondan con las propiedades de la clase Post.                    |
          |-------------------------------------------------------------------------------------------------------------*/
         var post = post_1.Post.fromJson(form.value);
-        post.likes = 0;
-        post.author = user_1.User.defaultUser();
-        post.publicationDate = this._getPostPublicationDate(form.value.publicationDate);
-        post.media = "";
-        post.categories = [];
-        this.postSubmitted.emit(post);
+        if (this.texto === 'Publicar') {
+            post.likes = 0;
+            post.author = user_1.User.defaultUser();
+            post.publicationDate = this._getPostPublicationDate(form.value.publicationDate);
+            post.media = "";
+            post.categories = [];
+            this.postSubmitted.emit(post);
+        }
+        else {
+            this.postSubmittedUpdated.emit(post);
+        }
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', post_1.Post)
+    ], PostFormComponent.prototype, "post", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)
     ], PostFormComponent.prototype, "postSubmitted", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], PostFormComponent.prototype, "postSubmittedUpdated", void 0);
     PostFormComponent = __decorate([
         core_1.Component({
             selector: "post-form",

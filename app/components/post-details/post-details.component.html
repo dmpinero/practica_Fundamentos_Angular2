@@ -21,12 +21,30 @@
         <span class="date">{{ post.publicationDate | FromNow }}</span>
     </div>
 </div>
-<div class="post">
+
+<!--
+|--------------------------------------------------------------------------|
+| Optional Path Broken White Path (AKA Blanco Roto)    
+|--------------------------------------------------------------------------|
+| Mostrar si no estoy editando
+|--------------------------------------------------------------------------|
+-->
+<div class="post" *ngIf="modo === 'consulta'">
     <h3>{{ post.title }}</h3>
     <img *ngIf="post.media" [src]="post.media" class="u-max-full-width">
     <div class="html-text" [innerHtml]="plainTextToHtml(post.intro)"></div>
     <hr>
     <div class="html-text" [innerHtml]="plainTextToHtml(post.body)"></div>
+
+    <!--
+    |--------------------------------------------------------------------------|
+    | Optional Path Broken White Path (AKA Blanco Roto)    
+    |--------------------------------------------------------------------------|
+    | Añadir botón de edición de formulario
+    |--------------------------------------------------------------------------|
+    -->
+    <button (click)="switchMode()" class="button-primary u-pull-center">Editar post</button>
+
     <!--
     |--------------------------------------------------------------------------|
     | Yellow Path                                                              |
@@ -37,3 +55,13 @@
     -->
     <category-box [categories]="post.categories" (categoriaPosts)="filtrarPorCategoria($event)"></category-box>
 </div>
+
+
+<!--
+|--------------------------------------------------------------------------|
+| Optional Path Broken White Path (AKA Blanco Roto)    
+|--------------------------------------------------------------------------|
+| Mostrar si estoy editando. Pasar post para recibirlo como @Input
+|--------------------------------------------------------------------------|
+-->
+<post-form [post]="post" *ngIf="modo === 'editar'" (postSubmittedUpdated)="updatePost($event)"></post-form>

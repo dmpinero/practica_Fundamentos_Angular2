@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
+require('rxjs/add/operator/toPromise');
 var settings_service_1 = require("./settings.service");
 var post_1 = require('../models/post');
 var PostService = (function () {
@@ -21,6 +22,12 @@ var PostService = (function () {
         this._http = _http;
         this._backendUri = _backendUri;
         this.fecha_actual = Date.now();
+        /*----------------------------------------------------------------------------------|
+         | ~~~ Optional Path Broken White Path (AKA Blanco Roto) ~~~                                                              |
+         |----------------------------------------------------------------------------------|
+         | Actuaizar Post
+         |----------------------------------------------------------------------------------*/
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     PostService.prototype.getPosts = function () {
         /*----------------------------------------------------------------------------------------------|
@@ -117,6 +124,18 @@ var PostService = (function () {
             // Creamos una instancia de Post.
             return post_1.Post.fromJson(json);
         });
+    };
+    PostService.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    };
+    PostService.prototype.updatePost = function (post) {
+        var url = this._backendUri + "/posts/" + post.id;
+        return this._http
+            .put(url, JSON.stringify(post), { headers: this.headers })
+            .toPromise()
+            .then(function () { return post; })
+            .catch(this.handleError);
     };
     PostService = __decorate([
         core_1.Injectable(),

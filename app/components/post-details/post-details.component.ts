@@ -1,7 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Router, ActivatedRoute} from "@angular/router";
 
+import { FormGroup } from "@angular/forms";
+
 import { Post } from "../../models/post";
+import { PostService } from '../../services/post.service';
+
 
 @Component({
     templateUrl: "./app/components/post-details/post-details.component.html",
@@ -10,8 +14,17 @@ import { Post } from "../../models/post";
 export class PostDetailsComponent implements OnInit {
 
     post: Post;
-    constructor(private _activatedRoute: ActivatedRoute, private _router: Router) { }
+    constructor(private _activatedRoute: ActivatedRoute, 
+                private _router: Router, 
+                private _postService: PostService) { }
 
+    /*---------------------------------------------------------------------------------------------------------------|
+     | ~~~ Optional Path Broken White Path (AKA Blanco Roto)  ~~~                                                                                              |
+     |---------------------------------------------------------------------------------------------------------------|
+     | Editar controla el modo en el que se está                                                                     |
+     |---------------------------------------------------------------------------------------------------------------*/
+    modo:string =  'consulta';
+    
     ngOnInit(): void {
         this._activatedRoute.data.forEach((data: { post: Post}) => this.post = data.post);
         window.scrollTo(0, 0);
@@ -42,4 +55,31 @@ export class PostDetailsComponent implements OnInit {
      filtrarPorCategoria(id: number): void {
          this._router.navigate(['posts/categories', id]);
      }
+
+    /*---------------------------------------------------------------------------------------------------------------|
+     | ~~~ Optional Path Broken White Path (AKA Blanco Roto)  ~~~                                                                                              |
+     |---------------------------------------------------------------------------------------------------------------|
+     | Cambiar modo al pusar en el botón Editar post                                                                 |
+     |---------------------------------------------------------------------------------------------------------------*/
+     switchMode(): void {
+         if (this.modo === 'editar')
+         {
+             this.modo = 'consulta';
+         }
+         else {
+             this.modo = 'editar';
+         }
+     }
+
+    /*---------------------------------------------------------------------------------------------------------------|
+     | ~~~ Optional Path Broken White Path (AKA Blanco Roto)  ~~~                                                                                              |
+     |---------------------------------------------------------------------------------------------------------------|
+     | Actualizar post                                                                 |
+     |---------------------------------------------------------------------------------------------------------------*/
+    updatePost(): void {
+        this._postService.updatePost(this.post)
+            .then(() => {
+                this._router.navigate(['/'])
+            });
+    }     
 }

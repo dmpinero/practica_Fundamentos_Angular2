@@ -12,6 +12,7 @@ import { PostService } from "../../services/post.service";
 export class NewStoryComponent implements OnDestroy {
 
     private _postSubscription: Subscription;
+    texto: string;
 
     constructor(
         private _postService: PostService,
