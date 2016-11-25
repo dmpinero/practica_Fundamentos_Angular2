@@ -32,10 +32,10 @@ export class PostService {
          |   - Filtro por fecha de publicación: publicationDate_lte=x (siendo x la fecha actual)        |
          |   - Ordenación: _sort=publicationDate&_order=DESC                                            |
          |----------------------------------------------------------------------------------------------*/
-        
         return this._http
-                   .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${this.fecha_actual}`)
-                   .map((response: Response) => Post.fromJsonToList(response.json()));
+            .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${this.fecha_actual}`)
+            .map((response: Response) => Post.fromJsonToList(response.json()));
+                      
     }
 
     getUserPosts(id: number): Observable<Post[]> {
@@ -147,7 +147,7 @@ export class PostService {
    /*----------------------------------------------------------------------------------|
     | ~~~ Brick Red Path (AKA Teja): ~~~                                               |
     |----------------------------------------------------------------------------------|
-    | Actuaizar Likes                                                                   |
+    | Actualizar Likes                                                                 |
     |----------------------------------------------------------------------------------*/
     updateLikes(post: Post): Promise<Post> {
             const url = `${this._backendUri}/posts/${post.id}`;
@@ -158,4 +158,17 @@ export class PostService {
                 .catch(this.handleError);
         }
 
+   /*----------------------------------------------------------------------------------|
+    | ~~~ Red Wine Path (AKA Vino Tinto): ~~~                                          |
+    |----------------------------------------------------------------------------------|
+    | Buscar por el texto introducido en el input                                      |
+    |----------------------------------------------------------------------------------*/   
+    search(texto: string): Observable<Post[]> {
+       const url = `${this._backendUri}/posts?q=${texto}`;
+        return this._http
+            .get(url)
+            .map((response: Response) => {
+                return Post.fromJsonToList(response.json()
+            )});     
+    }
 }

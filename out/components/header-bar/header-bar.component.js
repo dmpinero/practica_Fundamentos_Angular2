@@ -9,16 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+/*Red Wine Path (AKA Vino Tinto)*/
+var router_1 = require("@angular/router");
 var HeaderBarComponent = (function () {
-    function HeaderBarComponent() {
+    /* Red Wine Path (AKA Vino Tinto) */
+    function HeaderBarComponent(_router) {
+        this._router = _router;
     }
+    HeaderBarComponent.prototype.buscar = function (texto) {
+        this._router.navigate(['/searchResults', texto]);
+    };
     HeaderBarComponent = __decorate([
         core_1.Component({
             selector: "header-bar",
             templateUrl: "./app/components/header-bar/header-bar.component.html",
             styleUrls: ["./app/components/header-bar/header-bar.component.css"]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], HeaderBarComponent);
     return HeaderBarComponent;
 }());

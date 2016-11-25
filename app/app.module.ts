@@ -27,9 +27,12 @@ import { PostsListComponent } from "./components/posts-list/posts-list.component
 import { PostsResolve } from "./services/posts-resolve.service";
 import { PostService } from "./services/post.service";
 import { SearchBoxComponent } from "./components/search-box/search-box.component";
+import { BuscadorComponent } from './components/buscador/buscador.component';
 import { UserPostsComponent } from "./components/user-posts/user-posts.component";
 import { FromNowPipe } from './pipes/from-now.pipe';
 import { LikesComponent } from './components/likes/likes.component';
+import { SearchResolve } from './services/search-resolve.service';
+
 
 @NgModule({
     imports: [
@@ -58,6 +61,7 @@ import { LikesComponent } from './components/likes/likes.component';
         PostFormComponent,
         PostsListComponent,
         SearchBoxComponent,
+        BuscadorComponent,
         UserPostsComponent,
         FromNowPipe,
         LikesComponent
@@ -68,6 +72,7 @@ import { LikesComponent } from './components/likes/likes.component';
         PostDetailsResolve,
         PostService,
         PostsResolve,
+        SearchResolve
     ],
     bootstrap: [
         AppComponent

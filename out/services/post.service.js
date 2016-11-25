@@ -140,7 +140,7 @@ var PostService = (function () {
     /*----------------------------------------------------------------------------------|
      | ~~~ Brick Red Path (AKA Teja): ~~~                                               |
      |----------------------------------------------------------------------------------|
-     | Actuaizar Likes                                                                   |
+     | Actualizar Likes                                                                 |
      |----------------------------------------------------------------------------------*/
     PostService.prototype.updateLikes = function (post) {
         var url = this._backendUri + "/posts/" + post.id;
@@ -149,6 +149,19 @@ var PostService = (function () {
             .toPromise()
             .then(function () { return post; })
             .catch(this.handleError);
+    };
+    /*----------------------------------------------------------------------------------|
+     | ~~~ Red Wine Path (AKA Vino Tinto): ~~~                                          |
+     |----------------------------------------------------------------------------------|
+     | Buscar por el texto introducido en el input                                      |
+     |----------------------------------------------------------------------------------*/
+    PostService.prototype.search = function (texto) {
+        var url = this._backendUri + "/posts?q=" + texto;
+        return this._http
+            .get(url)
+            .map(function (response) {
+            return post_1.Post.fromJsonToList(response.json());
+        });
     };
     PostService = __decorate([
         core_1.Injectable(),

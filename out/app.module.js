@@ -35,9 +35,11 @@ var posts_list_component_1 = require("./components/posts-list/posts-list.compone
 var posts_resolve_service_1 = require("./services/posts-resolve.service");
 var post_service_1 = require("./services/post.service");
 var search_box_component_1 = require("./components/search-box/search-box.component");
+var buscador_component_1 = require('./components/buscador/buscador.component');
 var user_posts_component_1 = require("./components/user-posts/user-posts.component");
 var from_now_pipe_1 = require('./pipes/from-now.pipe');
 var likes_component_1 = require('./components/likes/likes.component');
+var search_resolve_service_1 = require('./services/search-resolve.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -67,6 +69,7 @@ var AppModule = (function () {
                 post_form_component_1.PostFormComponent,
                 posts_list_component_1.PostsListComponent,
                 search_box_component_1.SearchBoxComponent,
+                buscador_component_1.BuscadorComponent,
                 user_posts_component_1.UserPostsComponent,
                 from_now_pipe_1.FromNowPipe,
                 likes_component_1.LikesComponent
@@ -77,6 +80,7 @@ var AppModule = (function () {
                 post_details_resolve_service_1.PostDetailsResolve,
                 post_service_1.PostService,
                 posts_resolve_service_1.PostsResolve,
+                search_resolve_service_1.SearchResolve
             ],
             bootstrap: [
                 app_component_1.AppComponent

@@ -8,6 +8,8 @@ import { PostDetailsComponent } from "./components/post-details/post-details.com
 import { UserPostsComponent } from "./components/user-posts/user-posts.component";
 import { PostDetailsResolve } from "./services/post-details-resolve.service";
 import { PostsResolve } from "./services/posts-resolve.service";
+import { BuscadorComponent } from './components/buscador/buscador.component';
+import { SearchResolve } from './services/search-resolve.service';
 
 const routes: Routes = [
     {
@@ -43,9 +45,16 @@ const routes: Routes = [
         }
     },
     {
+        path: "searchResults/:texto",
+        component: BuscadorComponent,
+        resolve: {
+            posts: SearchResolve
+        }        
+    },    
+    {
         path: "**",
         redirectTo: "/posts"
-    }
+    },
 ];
 
 @NgModule({

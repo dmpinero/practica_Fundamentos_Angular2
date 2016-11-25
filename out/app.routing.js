@@ -17,6 +17,8 @@ var post_details_component_1 = require("./components/post-details/post-details.c
 var user_posts_component_1 = require("./components/user-posts/user-posts.component");
 var post_details_resolve_service_1 = require("./services/post-details-resolve.service");
 var posts_resolve_service_1 = require("./services/posts-resolve.service");
+var buscador_component_1 = require('./components/buscador/buscador.component');
+var search_resolve_service_1 = require('./services/search-resolve.service');
 var routes = [
     {
         path: "posts",
@@ -51,9 +53,16 @@ var routes = [
         }
     },
     {
+        path: "searchResults/:texto",
+        component: buscador_component_1.BuscadorComponent,
+        resolve: {
+            posts: search_resolve_service_1.SearchResolve
+        }
+    },
+    {
         path: "**",
         redirectTo: "/posts"
-    }
+    },
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
